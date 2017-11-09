@@ -1,5 +1,6 @@
 # short-link
-a meteor app for providing short links (from a <a href="https://www.udemy.com/meteor-react/">udemy course</a>)
+a meteor app for providing short links (from this <a href="https://www.udemy.com/meteor-react/">udemy course</a>)
+this app is using <a href="https://reactjs.org/">React</a> components.
 
 <h2>Run</h2>
 <ol>
