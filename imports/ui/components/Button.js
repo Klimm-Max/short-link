@@ -20,6 +20,6 @@ export default class Button extends React.Component {
 }
 
 Button.PropTypes = {
-  location = PropTypes.string,
-  buttonText = PropTypes.string.isRequired
+  location: PropTypes.string,
+  buttonText: PropTypes.string.isRequired
 }
