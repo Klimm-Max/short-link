@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default class Button extends React.Component {
   
@@ -16,4 +17,9 @@ export default class Button extends React.Component {
     return <Button/>
   }
 
+}
+
+Button.PropTypes = {
+  location = PropTypes.string,
+  buttonText = PropTypes.string.isRequired
 }
