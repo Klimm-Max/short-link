@@ -1,10 +1,15 @@
 import React from 'react';
+import Button from './components/Button';
 
 class Link extends React.Component {
-
+  
   render() {
+
     return(
-      <h1>Link</h1>
+      <div>
+        <h1>Link</h1>
+        <Button location="/" buttonText="Logout"/>
+      </div>
     );
   }
 
