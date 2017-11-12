@@ -14,7 +14,7 @@ export default class SignUp extends React.Component {
 
   componentDidMount() {
     if (Meteor.userId()) {
-      browserHistory.push('/links')
+      browserHistory.replace('/links')
     }
   }
 

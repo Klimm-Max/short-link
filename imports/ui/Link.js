@@ -10,7 +10,7 @@ class Link extends React.Component {
 
   componentDidMount() {
     if (!Meteor.userId()) {
-      browserHistory.push('/');
+      browserHistory.replace('/');
     }
   }
 

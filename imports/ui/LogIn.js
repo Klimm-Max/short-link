@@ -14,7 +14,7 @@ export default class Login extends React.Component {
 
   componentDidMount() {
     if (Meteor.userId()) {
-      browserHistory.push('/links')
+      browserHistory.replace('/links')
     }
   }
 
