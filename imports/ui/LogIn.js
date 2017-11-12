@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
+import { browserHistory } from '../../client/main';
 
 export default class Login extends React.Component {
 
@@ -9,6 +10,12 @@ export default class Login extends React.Component {
     this.state = {
       error: ''
     };
+  }
+
+  componentDidMount() {
+    if (Meteor.userId()) {
+      browserHistory.push('/links')
+    }
   }
 
   onSubmit(e) {

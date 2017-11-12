@@ -9,15 +9,15 @@ import SignUp from '../imports/ui/SignUp';
 import Link from '../imports/ui/Link';
 import NotFound from '../imports/ui/NotFound';
 
-const browserHistory = createHistory();
+export const browserHistory = createHistory();
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/links'];
 
 const routes = (
   <Router history={browserHistory}>
     <Switch>
-      <Route exact path="/" component={LogIn}/>
-      <Route path="/signup" component={SignUp}/>
+      <Route exact path="/" component={LogIn} />
+      <Route path="/signup" component={SignUp} />
       <Route path="/links" component={Link} />
       <Route path="*" component={NotFound} /> 
     </Switch>
