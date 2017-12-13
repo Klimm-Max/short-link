@@ -3,6 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { browserHistory } from '../../client/main';
 
 import { Links } from '../api/links';
+import LinksList from './LinksList';
 
 class Link extends React.Component {
   
@@ -32,6 +33,9 @@ class Link extends React.Component {
       <div>
         <h1>Links:</h1>
         <button onClick={this.onLogout.bind(this)} >Logout</button>
+
+        <LinksList/>
+
         <p>Add Link</p>
         <form onSubmit={this.onSubmit.bind(this)}>
           <input type="text" ref="url" placeholder="URL"></input>
