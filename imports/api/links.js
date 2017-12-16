@@ -15,6 +15,8 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+  /* This method will insert a new DB Object by the given URL. It also checks, if
+  there is a currently logged in user and validates the given URL for a URL Schema. */
   'links.insert'(url) {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -35,6 +37,8 @@ Meteor.methods({
       visible: true
     });
   },
+  /* This method will set the Object attribute 'visible' of a link to the called param.
+  it checks if the user ownes the given linkId. If so, the DB Model will be updated.   */
   'links.setVisibility'(_id, visible) {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -45,15 +49,17 @@ Meteor.methods({
       _id: {
         type: String,
         min: 1
-      }
-    }).validate({ _id });
-    new SimpleSchema({
+      },
       visible: {
         type: Boolean
       }
-    }).validate({ visible });
+    }).validate({ _id, visible });
 
-    Links.update({ _id, userId: this.userId }, {$set: {visible}});
+    Links.update({ 
+      _id, userId: this.userId
+    }, {
+      $set: {visible}                 
+    });
   }
 
 });
