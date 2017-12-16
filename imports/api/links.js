@@ -31,8 +31,29 @@ Meteor.methods({
     Links.insert({
       _id: shortid.generate(),
       url,
-      userId: this.userId
+      userId: this.userId,
+      visible: true
     });
+  },
+  'links.setVisibility'(_id, visible) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    // validate calling params
+    new SimpleSchema({
+      _id: {
+        type: String,
+        min: 1
+      }
+    }).validate({ _id });
+    new SimpleSchema({
+      visible: {
+        type: Boolean
+      }
+    }).validate({ visible });
+
+    Links.update({ _id, userId: this.userId }, {$set: {visible}});
   }
 
 });
