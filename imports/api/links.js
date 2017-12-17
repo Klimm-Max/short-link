@@ -14,6 +14,7 @@ if (Meteor.isServer) {
   });
 }
 
+/* The Built-In Meteor Invoke Handler for calling methods anywhere in Code. */
 Meteor.methods({
   /* This method will insert a new DB Object by the given URL. It also checks, if
   there is a currently logged in user and validates the given URL for a URL Schema. */
@@ -34,11 +35,13 @@ Meteor.methods({
       _id: shortid.generate(),
       url,
       userId: this.userId,
-      visible: true
+      visible: true,
+      visitedCount: 0,
+      lastVisitedAt: null
     });
   },
   /* This method will set the Object attribute 'visible' of a link to the called param.
-  it checks if the user ownes the given linkId. If so, the DB Model will be updated.   */
+  It checks if the user ownes the given link (over ID). If so, the DB Model will be updated.   */
   'links.setVisibility'(_id, visible) {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -60,6 +63,23 @@ Meteor.methods({
     }, {
       $set: {visible}                 
     });
+  },
+  /* This method will take the link ID and increase the visitedCount by 1.
+  The lastVisitedAt Field will be filled with the current Date&Time. */
+  'links.trackVisit'(_id) {
+    new SimpleSchema({
+      _id: {
+        type: String,
+        min: 1
+      }
+    }).validate({ _id });
+
+    Links.update({ _id }, 
+      {
+        $set: { lastVisitedAt: new Date().getTime() },
+        $inc: { visitedCount: 1 }
+      }
+    );
   }
 
 });
