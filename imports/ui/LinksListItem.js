@@ -21,7 +21,7 @@ export default class LinksListItem extends React.Component {
     });
     
     this.clipboard.on('error', () => {
-      alert('Copy was not successful');
+      alert('Copy was not successfull');
     });
   }
 
