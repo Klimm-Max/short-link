@@ -21,8 +21,8 @@ class Link extends React.Component {
       <div>
         <Header title="Your Links"/>
         <LinksListFilter />
-        <LinksList />
         <AddLinkForm />
+        <LinksList />
       </div>
     );
   }
