@@ -1,0 +1,10 @@
+html {
+  // basic font size is 16. 16*0,625 = 10
+  font-size: 62.5%;
+}
+
+body {
+  // the 1.6 times of the basic font size (10), so 16
+  font-size: $fs-base;
+  font-family: Helvetica, Arial, sans-serif;
+}

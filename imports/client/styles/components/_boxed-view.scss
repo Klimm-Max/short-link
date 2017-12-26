@@ -1,0 +1,15 @@
+.boxed-view {
+  align-items: center;
+  background: $bv-overlay-bg;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.boxed-view__box {
+  background-color: $bv-bg;
+  padding: 2.4rem;
+  text-align: center;
+  width: 24rem;
+}
